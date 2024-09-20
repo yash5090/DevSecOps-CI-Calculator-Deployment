@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-calculator-deployment
+spec:
+  replicas: 6  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: ci-calculator
+  template:
+    metadata:
+      labels:
+        app: ci-calculator
+    spec:
+      containers:
+      - name: ci-calculator
+        image: yash5090/ci-calculator:latest
+        ports:
+        - containerPort: 5000

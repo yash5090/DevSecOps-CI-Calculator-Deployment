@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ci-calculator-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: ci-calculator-job
+        image: yash5090/ci-calculator:latest
+        ports:
+        - containerPort: 5000
+      restartPolicy: OnFailure

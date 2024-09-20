@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ci-calculator-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: ci-calculator
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ci-calculator
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: ci-calculator

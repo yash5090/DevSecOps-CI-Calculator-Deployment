@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ci-calculator-ingress
+spec:
+  rules:
+  - host: ci-calculator
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ci-calculator-service
+            port:
+              number: 5000 #80
+      - path: /app
+        pathType: Prefix
+        backend:
+          service:
+            name: ci-calculator-service
+            port:
+              number: 5000 #80
